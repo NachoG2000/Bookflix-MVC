@@ -1,5 +1,13 @@
+import controlador.ControladorCatalogo;
+import controlador.ControladorUsuario;
+import vista.VistaPrincipal;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        ControladorUsuario controladorUsuario = new ControladorUsuario();
+        ControladorCatalogo controladorCatalogo = new ControladorCatalogo();
+        VistaPrincipal vistaPrincipal = new VistaPrincipal(controladorUsuario,controladorCatalogo);
+        controladorUsuario.setVistaPrincipal(vistaPrincipal);
+        controladorCatalogo.setVistaPrincipal(vistaPrincipal);
     }
 }
