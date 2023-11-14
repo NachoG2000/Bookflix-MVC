@@ -8,20 +8,12 @@ import controlador.ControladorUsuario;
 import vista.VistaPrincipal;
 
 public class PanelIniciarSesion extends JPanel {
-    private ControladorUsuario controladorUsuario;
-    private ControladorCatalogo controladorCatalogo;
-    private VistaPrincipal vistaPrincipal;
-
     private JTextField nombreUsuarioField;
     private JPasswordField contraseniaField;
     private JButton botonIniciarSesion;
     private JButton botonAtras;
 
     public PanelIniciarSesion(ControladorUsuario controladorUsuario, ControladorCatalogo controladorCatalogo, VistaPrincipal vistaPrincipal){
-        this.controladorCatalogo = controladorCatalogo;
-        this.controladorUsuario = controladorUsuario;
-        this.vistaPrincipal = vistaPrincipal;
-
         this.setLayout(new GridLayout(4, 1));
 
         JLabel etiqueta1 = new JLabel("Usuario:");

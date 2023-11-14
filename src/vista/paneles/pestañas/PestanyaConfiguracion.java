@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import controlador.ControladorCatalogo;
 import controlador.ControladorUsuario;
 import vista.VistaPrincipal;
-import vista.paneles.PanelBibliotecaCliente;
 import vista.paneles.PanelInicio;
 
 public class PestanyaConfiguracion extends JPanel{
