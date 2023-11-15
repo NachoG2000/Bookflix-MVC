@@ -53,8 +53,9 @@ public class PestanyaCatalogo extends JPanel{
 
             // Añade un MouseListener a la lista
             listaLibros.addMouseListener(new MouseAdapter() {
+                @SuppressWarnings("unchecked")
                 public void mouseClicked(MouseEvent evt) {
-                    JList list = (JList)evt.getSource();
+                    JList<String> list = (JList<String>)evt.getSource();
                     if (evt.getClickCount() == 2) { // Doble clic
             
                         // Obtiene el índice del elemento seleccionado
