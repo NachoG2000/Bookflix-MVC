@@ -1,4 +1,3 @@
-import DAO.ConectorDB;
 import controlador.ControladorCatalogo;
 import controlador.ControladorUsuario;
 import vista.VistaPrincipal;
@@ -8,7 +7,6 @@ public class App {
         ControladorUsuario controladorUsuario = new ControladorUsuario();
         ControladorCatalogo controladorCatalogo = new ControladorCatalogo();
         VistaPrincipal vistaPrincipal = new VistaPrincipal(controladorUsuario, controladorCatalogo);
-        // controladorUsuario.setVistaPrincipal(vistaPrincipal);
-        // controladorCatalogo.setVistaPrincipal(vistaPrincipal);
+        System.out.println(vistaPrincipal);
     }
 }

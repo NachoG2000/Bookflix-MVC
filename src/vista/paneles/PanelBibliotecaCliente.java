@@ -17,11 +17,11 @@ public class PanelBibliotecaCliente extends JPanel{
         this.pestañas = new JTabbedPane();
 
         // Instancia los paneles y añádelos como pestañas
-        PestanyaCatalogo panelCatalogo = new PestanyaCatalogo(controladorUsuario, controladorCatalogo, vistaPrincipal);
-        PestanyaConfiguracion panelConfiguracion = new PestanyaConfiguracion(controladorUsuario, controladorCatalogo, vistaPrincipal);
+        PestanyaCatalogo pestanyaCatalogo = new PestanyaCatalogo(controladorUsuario, controladorCatalogo, vistaPrincipal);
+        PestanyaConfiguracion pestanyaConfiguracion = new PestanyaConfiguracion(controladorUsuario, controladorCatalogo, vistaPrincipal, pestanyaCatalogo);
 
-        pestañas.addTab("Catálogo", panelCatalogo);
-        pestañas.addTab("Configuración", panelConfiguracion);
+        pestañas.addTab("Catálogo", pestanyaCatalogo);
+        pestañas.addTab("Configuración", pestanyaConfiguracion);
 
         this.add(pestañas, BorderLayout.CENTER); // Añadir el JTabbedPane al centro del BorderLayout
     }

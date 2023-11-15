@@ -20,10 +20,6 @@ public class ControladorUsuario {
         }
     }
     
-    public void setUsuarioDAO(UsuarioDAO usuarioDAO){
-        this.usuarioDAO = usuarioDAO;
-    }
-    
     public boolean iniciarSesion(String usuario, String contrasenia){
         if(usuarioDAO.existeUsuario(usuario, contrasenia)){
             System.out.println("Iniciar sesion: Exitoso");
@@ -42,7 +38,7 @@ public class ControladorUsuario {
 
     public boolean crearCuenta(String usuario, String contrasenia, String confirmarContrasenia){
         if(usuario != null && !usuario.isEmpty() && contrasenia != null && !contrasenia.isEmpty() && contrasenia.equals(confirmarContrasenia)){
-            if(!usuarioDAO.existeUsuario(usuario, contrasenia)){
+            if(!usuarioDAO.existeUsuario(usuario, contrasenia)){ // ver esta parte del codigo porque la excepcion no esta manejada
                 if(usuarioDAO.crearUsuario(usuario, contrasenia)){
                     System.out.println("Crear cuenta: Exitoso");
                     try {
@@ -54,12 +50,33 @@ public class ControladorUsuario {
                     actualizarUsuarioActual();
                     return true;
                 }
-            } else {
+            } 
+            else {
                 System.out.println("Crear cuenta: El nombre de usuario ya existe");
             }
         }
         System.out.println("Crear cuenta: Error al crear cuenta");
         return false;
+    }
+
+    public boolean suscribirse(){
+        if(usuarioDAO.suscribirse(usuarioActual.getNombreUsuario())){
+            actualizarUsuarioActual();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public boolean cancelarSuscripcion(){
+        if(usuarioDAO.cancelarSuscripcion(usuarioActual.getNombreUsuario())){
+            actualizarUsuarioActual();
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public boolean cerrarSesion(){
@@ -75,7 +92,6 @@ public class ControladorUsuario {
     }
 
     public void actualizarUsuarioActual() {
-        System.out.println(usuarioActual.getNombreUsuario());
         try {
             // Obtén el usuario de la base de datos
             Usuario usuarioBD = usuarioDAO.obtenerUsuario(usuarioActual.getNombreUsuario());
@@ -89,5 +105,11 @@ public class ControladorUsuario {
             e.printStackTrace();
             // Manejar la excepción adecuadamente
         }
+        System.out.println(usuarioActual.getNombreUsuario());
+        System.out.println(usuarioActual.getEsSubscriptor());
+    }
+
+    public Usuario getUsuarioActual(){
+        return usuarioActual;
     }
 }

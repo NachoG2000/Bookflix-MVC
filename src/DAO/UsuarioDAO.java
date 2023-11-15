@@ -39,6 +39,32 @@ public class UsuarioDAO {
         }
     }
 
+    public boolean suscribirse(String nombreUsuario){
+        try {
+            PreparedStatement ps = conexion.prepareStatement("UPDATE t_usuarios SET esSubscriptor = ? WHERE nombreUsuario = ?");
+            ps.setBoolean(1, true);
+            ps.setString(2, nombreUsuario);
+            int rows = ps.executeUpdate();
+            return rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean cancelarSuscripcion(String nombreUsuario){
+        try {
+            PreparedStatement ps = conexion.prepareStatement("UPDATE t_usuarios SET esSubscriptor = ? WHERE nombreUsuario = ?");
+            ps.setBoolean(1, false);
+            ps.setString(2, nombreUsuario);
+            int rows = ps.executeUpdate();
+            return rows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public Usuario obtenerUsuario(String nombreUsuario) throws SQLException{
         try {
             PreparedStatement ps = conexion.prepareStatement("SELECT * FROM t_usuarios WHERE nombreUsuario = ?");

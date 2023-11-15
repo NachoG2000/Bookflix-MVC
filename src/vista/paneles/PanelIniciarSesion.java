@@ -44,7 +44,12 @@ public class PanelIniciarSesion extends JPanel {
             char[] contrasenia = contraseniaField.getPassword();
 
             if(controladorUsuario.iniciarSesion(usuario, new String(contrasenia))) {
-                vistaPrincipal.cambiarPanel(new PanelBibliotecaCliente(controladorUsuario, controladorCatalogo, vistaPrincipal)); // Ver si el usuario ingresado es admin o cliente antes de cambiar vista
+                if(!controladorUsuario.getUsuarioActual().getEsAdmin()){
+                    vistaPrincipal.cambiarPanel(new PanelBibliotecaCliente(controladorUsuario, controladorCatalogo, vistaPrincipal)); // Ver si el usuario ingresado es admin o cliente antes de cambiar vista
+                }
+                else{
+                    vistaPrincipal.cambiarPanel(new PanelBibliotecaAdmin(controladorUsuario, controladorCatalogo, vistaPrincipal)); // Ver si el usuario ingresado es admin o cliente antes de cambiar vista
+                }
             } else {
                 System.out.println("Verifica las credenciales");
             }
